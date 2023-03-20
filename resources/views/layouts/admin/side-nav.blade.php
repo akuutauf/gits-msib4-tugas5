@@ -59,7 +59,7 @@
                 </ul>
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cart.page') }}">
+                        <a class="nav-link" href="{{ route('index.cart') }}">
                             <i class="ni ni-cart text-theme"></i>
                             <span class="nav-link-text">Lihat Keranjang</span>
                         </a>

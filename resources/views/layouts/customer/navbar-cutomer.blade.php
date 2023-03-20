@@ -19,7 +19,7 @@
                             <i class="fa-solid fa-store m-1 me-md-2"></i>
                             <p class="d-none d-md-block mb-0">Toko</p>
                         </a>
-                        <a href="{{ route('cart.page') }}"
+                        <a href="{{ route('index.cart') }}"
                             class="btn-theme me-1 py-1 px-3 nav-link d-flex align-items-center">
                             <i class="fas fa-shopping-cart m-1 me-md-2"></i>
                             <p class="d-none d-md-block mb-0">Keranjang Ku</p>
@@ -67,7 +67,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Beranda</a>
+                        <a class="nav-link active" href="{{ route('home.page') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#figure">Figure</a>
