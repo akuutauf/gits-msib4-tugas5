@@ -29,6 +29,6 @@ Nama: Taufik Hidayat Universitas: Politeknik Negeri Banyuwangi
 // Selasa
 // Memperbaiki relasi tabel (06.30 - 07.00)
 // Menambahkan fitur insert product pada tabel cart (07.00 - 9.15)
-
+// Menambahkan fitur update dan delete untuk cart (11.30 - )
 
 -->

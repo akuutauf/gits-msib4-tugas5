@@ -18,7 +18,7 @@
         $slug = explode('-', $date);
         return $slug[2] . ' ' . $month[(int) $slug[1]] . ' ' . $slug[0];
     }
-    
+
     function priceConversion($price)
     {
         $formattedPrice = number_format($price, 0, ',', '.');
@@ -56,30 +56,43 @@
 
                                     <div class="col-lg-4 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
                                         <div class="pt-2">
-                                            <small class="text-muted text-nowrap"> IDR {{ priceConversion($item->price) }} /
+                                            <small class="text-muted text-nowrap"> IDR
+                                                {{ priceConversion($item->price) }} /
                                                 per item
                                             </small> <br>
-                                            <span class="h6 fw-bold">Total : IDR {{ $item->total_price }}</span>
+                                            <span class="h6 fw-bold">Total : IDR
+                                                {{ priceConversion($item->total_price) }}</span>
 
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input mt-2" id="exampleCheck1"
-                                                    checked="yes">
-                                                <input type="number" class="form-control mt-3" id="quantity"
-                                                    name="quantity" value="{{ $item->quantity }}">
-                                            </div>
+                                            {{-- Start form --}}
+                                            <form action="{{ route('update.cart', $item->id) }}" method="POST">
+                                                @method('put')
+                                                @csrf
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input mt-2" id="exampleCheck1"
+                                                        checked="yes">
+                                                    <input type="number" class="form-control mt-3" id="quantity"
+                                                        name="quantity" value="{{ $item->quantity }}" min="1"
+                                                        max="99">
+                                                </div>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-1 justify-content-center">
                                         <div class="float-md-start pt-3">
-                                            <a href="#!" class="btn btn-theme px-2 icon-hover-primary">
+
+                                            <button type="submit" class="btn btn-theme px-2 icon-hover-primary">
                                                 <i class="fa-solid fa-check fa-lg px-1"></i>
-                                            </a>
-                                            <a href="#!" class="btn btn-theme-two px-2 icon-hover-primary">
+                                            </button>
+                                            </form>
+
+                                            <a href="{{ route('delete.cart', $item->id) }}"
+                                                class="btn btn-theme-two px-2 icon-hover-primary">
                                                 <i class="fa-solid fa-trash fa-lg px-1"></i>
                                             </a>
                                         </div>
                                     </div>
+
                                 </div>
                             @endforeach
 

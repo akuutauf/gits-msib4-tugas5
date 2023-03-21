@@ -86,7 +86,26 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // mengambil data price product
+        $cart = Cart::find($id);
+        $searchProduct = $cart->product_id;
+        $price = Product::where('id', $searchProduct)->get();
+        // $fix_price = $price->id;
+
+        // mengambil data field quantity
+        $quantity = $request->input('quantity');
+        $fix_quantity = intval($quantity);
+
+        // tes panggil variabel
+        dd($price);
+
+        // proses update
+        // Cart::where('id', $id)->update([
+        //     'quantity' => $quantity,
+        //     'total_price' => $fix_price * $fix_quantity,
+        // ]);
+
+        // return redirect()->route('index.cart');
     }
 
     /**
@@ -97,6 +116,9 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Cart::findOrFail($id);
+        $data->delete();
+
+        return redirect()->route('index.cart');
     }
 }
