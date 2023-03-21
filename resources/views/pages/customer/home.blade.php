@@ -120,31 +120,19 @@
                                             <b>{{ $item->name }}</b>
                                         </h6>
 
-                                        <button type="submit"
-                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                            <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                        </button>
-
-                                        {{-- jika product ada di cart --}}
-                                        {{-- @foreach ($carts as $data)
-                                            @if ($item->id == $data->product_id)
-                                                <button type="submit"
-                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover disabled">
-                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                                </button>
-                                            @endif
-                                        @endforeach --}}
-
-                                        {{-- jika product tidak ada di cart --}}
-                                        {{-- @foreach ($carts as $data)
-                                            @if ($item->id != $data->product_id)
-                                                <button type="submit"
-                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                                </button>
-                                            @break
+                                        @if ($carts->contains('product_id', $item->id))
+                                            {{-- button disable --}}
+                                            <button type="submit"
+                                                class="btn cart-disable border px-2 mx-1 pt-2 float-end disabled">
+                                                <i class="fas fa-shopping-cart fa-lg px-1"></i>
+                                            </button>
+                                        @else
+                                            {{-- button normal --}}
+                                            <button type="submit"
+                                                class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                                <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                            </button>
                                         @endif
-                                    @endforeach --}}
 
                                         <a href=""
                                             class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
@@ -215,31 +203,19 @@
                                             <b>{{ $item->name }}</b>
                                         </h6>
 
-                                        <button type="submit"
-                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                            <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                        </button>
-
-                                        {{-- jika product ada di cart --}}
-                                        {{-- @foreach ($carts as $data)
-                                            @if ($item->id == $data->product_id)
-                                                <button type="submit"
-                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover disabled">
-                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                                </button>
-                                            @endif
-                                        @endforeach --}}
-
-                                        {{-- jika product tidak ada di cart --}}
-                                        {{-- @foreach ($carts as $data)
-                                            @if ($item->id != $data->product_id)
-                                                <button type="submit"
-                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                                </button>
-                                            @break
+                                        @if ($carts->contains('product_id', $item->id))
+                                            {{-- button disable --}}
+                                            <button type="submit"
+                                                class="btn cart-disable border px-2 mx-1 pt-2 float-end disabled">
+                                                <i class="fas fa-shopping-cart fa-lg px-1"></i>
+                                            </button>
+                                        @else
+                                            {{-- button normal --}}
+                                            <button type="submit"
+                                                class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                                <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                            </button>
                                         @endif
-                                    @endforeach --}}
 
                                         <a href=""
                                             class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
@@ -310,31 +286,19 @@
                                             <b>{{ $item->name }}</b>
                                         </h6>
 
-                                        <button type="submit"
-                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                            <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                        </button>
-
-                                        {{-- jika product ada di cart --}}
-                                        {{-- @foreach ($carts as $data)
-                                            @if ($item->id == $data->product_id)
-                                                <button type="submit"
-                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover disabled">
-                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                                </button>
-                                            @endif
-                                        @endforeach --}}
-
-                                        {{-- jika product tidak ada di cart --}}
-                                        {{-- @foreach ($carts as $data)
-                                            @if ($item->id != $data->product_id)
-                                                <button type="submit"
-                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                                </button>
-                                            @break
+                                        @if ($carts->contains('product_id', $item->id))
+                                            {{-- button disable --}}
+                                            <button type="submit"
+                                                class="btn cart-disable border px-2 mx-1 pt-2 float-end disabled">
+                                                <i class="fas fa-shopping-cart fa-lg px-1"></i>
+                                            </button>
+                                        @else
+                                            {{-- button normal --}}
+                                            <button type="submit"
+                                                class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                                <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                            </button>
                                         @endif
-                                    @endforeach --}}
 
                                         <a href=""
                                             class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
@@ -405,31 +369,19 @@
                                             <b>{{ $item->name }}</b>
                                         </h6>
 
-                                        <button type="submit"
-                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                            <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                        </button>
-
-                                        {{-- jika product ada di cart --}}
-                                        {{-- @foreach ($carts as $data)
-                                            @if ($item->id == $data->product_id)
-                                                <button type="submit"
-                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover disabled">
-                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                                </button>
-                                            @endif
-                                        @endforeach --}}
-
-                                        {{-- jika product tidak ada di cart --}}
-                                        {{-- @foreach ($carts as $data)
-                                            @if ($item->id != $data->product_id)
-                                                <button type="submit"
-                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                                </button>
-                                            @break
+                                        @if ($carts->contains('product_id', $item->id))
+                                            {{-- button disable --}}
+                                            <button type="submit"
+                                                class="btn cart-disable border px-2 mx-1 pt-2 float-end disabled">
+                                                <i class="fas fa-shopping-cart fa-lg px-1"></i>
+                                            </button>
+                                        @else
+                                            {{-- button normal --}}
+                                            <button type="submit"
+                                                class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                                <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                            </button>
                                         @endif
-                                    @endforeach --}}
 
                                         <a href=""
                                             class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
@@ -500,31 +452,19 @@
                                             <b>{{ $item->name }}</b>
                                         </h6>
 
-                                        <button type="submit"
-                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                            <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                        </button>
-
-                                        {{-- jika product ada di cart --}}
-                                        {{-- @foreach ($carts as $data)
-                                            @if ($item->id == $data->product_id)
-                                                <button type="submit"
-                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover disabled">
-                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                                </button>
-                                            @endif
-                                        @endforeach --}}
-
-                                        {{-- jika product tidak ada di cart --}}
-                                        {{-- @foreach ($carts as $data)
-                                            @if ($item->id != $data->product_id)
-                                                <button type="submit"
-                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
-                                                </button>
-                                            @break
+                                        @if ($carts->contains('product_id', $item->id))
+                                            {{-- button disable --}}
+                                            <button type="submit"
+                                                class="btn cart-disable border px-2 mx-1 pt-2 float-end disabled">
+                                                <i class="fas fa-shopping-cart fa-lg px-1"></i>
+                                            </button>
+                                        @else
+                                            {{-- button normal --}}
+                                            <button type="submit"
+                                                class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                                <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                            </button>
                                         @endif
-                                    @endforeach --}}
 
                                         <a href=""
                                             class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">

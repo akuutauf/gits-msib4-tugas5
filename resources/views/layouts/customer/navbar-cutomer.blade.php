@@ -70,19 +70,19 @@
                         <a class="nav-link active" href="{{ route('home.page') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#figure">Figure</a>
+                        <a class="nav-link" href="{{ route('home.page') }}#figure">Figure</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#manga">Manga</a>
+                        <a class="nav-link" href="{{ route('home.page') }}#manga">Manga</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#nendoroid">Nendoroid</a>
+                        <a class="nav-link" href="{{ route('home.page') }}#nendoroid">Nendoroid</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#merchandise">Merchandise</a>
+                        <a class="nav-link" href="{{ route('home.page') }}#merchandise">Merchandise</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#accessories">Accessories</a>
+                        <a class="nav-link" href="{{ route('home.page') }}#accessories">Accessories</a>
                     </li>
                     <!-- Navbar dropdown -->
                     <li class="nav-item dropdown">

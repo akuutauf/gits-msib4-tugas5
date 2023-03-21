@@ -151,6 +151,13 @@ body {
     background-color: #344d67;
     color: white !important;
 }
+
+.cart-disable {
+    border-color: #10a19d !important;
+    color: #10a19d !important;
+    background-color: white !important;
+}
+
 /* Font size */
 .fs-20 {
     font-size: 16px;
