@@ -16,6 +16,11 @@ class CartController extends Controller
      */
     public function index()
     {
+        // mengecek apakah produk ada pada cart
+        // $cart = Cart::find($id);
+        // $searchProduct = $cart->product_id;
+        // $price = Product::where('id', $searchProduct)->value('price');
+
         $data = [
             'product_ready' => Product::where('status', "Ready")->orWhere('status', "Pre-Order")->get(),
             'products' => DB::table('carts')->join('products', 'carts.product_id', '=', 'products.id')->select('products.*', 'carts.*')->orderBy('.carts.product_id', 'desc')->get(),
@@ -89,23 +94,22 @@ class CartController extends Controller
         // mengambil data price product
         $cart = Cart::find($id);
         $searchProduct = $cart->product_id;
-        $price = Product::where('id', $searchProduct)->get();
-        // $fix_price = $price->id;
+        $price = Product::where('id', $searchProduct)->value('price');
 
         // mengambil data field quantity
         $quantity = $request->input('quantity');
         $fix_quantity = intval($quantity);
 
         // tes panggil variabel
-        dd($price);
+        // dd($price);
 
         // proses update
-        // Cart::where('id', $id)->update([
-        //     'quantity' => $quantity,
-        //     'total_price' => $fix_price * $fix_quantity,
-        // ]);
+        Cart::where('id', $id)->update([
+            'quantity' => $quantity,
+            'total_price' => $price * $fix_quantity,
+        ]);
 
-        // return redirect()->route('index.cart');
+        return redirect()->route('index.cart');
     }
 
     /**
