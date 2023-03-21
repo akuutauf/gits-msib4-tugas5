@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +16,7 @@ class CartController extends Controller
     public function index()
     {
         $data = [
+            'product_ready' => Product::where('status', "Ready")->orWhere('status', "Pre-Order")->get(),
             'products' => DB::table('carts')->join('products', 'carts.product_id', '=', 'products.id')->select('products.*', 'carts.*')->orderBy('.carts.product_id', 'desc')->get(),
         ];
 

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('description')->nullable(true);
             $table->date('release_date')->nullable(false);
             $table->string('status', 20)->nullable(false);
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

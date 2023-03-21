@@ -18,4 +18,6 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    // ondelete cascade = untuk menghapus data product ketika data category dihapus
 }

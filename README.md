@@ -26,5 +26,9 @@ Nama: Taufik Hidayat Universitas: Politeknik Negeri Banyuwangi
 // Menyiapkan view untuk cart (07.07 - 08.45)
 // Mempersiapkan CRUD Cart (13.00 - 16.20)
 
+// Selasa
+// Memperbaiki relasi tabel (06.30 - )
+//
+
 
 -->

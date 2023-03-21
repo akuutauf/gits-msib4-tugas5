@@ -134,30 +134,47 @@
             <div class="row">
                 <div class="slider owl-carousel owl-theme">
 
-                    <div class="item col-md-12 d-flex justify-content-center p-2">
-                        <div class="card my-2 shadow-sm p-4 card-hover">
-                            <a href="#" class="img-wrap">
-                                <img src="{{ asset('images/manga/manga-01.webp') }}" class="card-img-top rounded"
-                                    style="aspect-ratio: 1 / 1">
-                            </a>
-                            <div class="card-body p-0 pt-2">
-                                <h6 class="card-title mt-2 pt-2 limit-text"><b>Shueisha Young Jump Comics Manga
-                                        Kubo-san wa Boku (Mob)
-                                        wo Yurusanai 10 - Yukimori Nene</b></h6>
-                                <a href="" class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                    @foreach ($product_ready as $item)
+                        <div class="item col-md-12 d-flex justify-content-center p-2">
+                            <div class="card my-2 shadow-sm p-4 card-hover">
+                                <a href="#!" class="img-wrap">
+                                    <img src="{{ $item->foto }}" class="card-img-top rounded" title="{{ $item->name }}"
+                                        style="aspect-ratio: 1 / 1">
                                 </a>
-                                <a href="" class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
-                                    <i class="fas fa-heart fa-lg px-1 text-secondary"></i>
-                                </a>
-                                <div class="btn run-out-content">Run Out</div>
-                                <p class="card-text mb-0 text-theme-two pt-2"><b>IDR 140.000</b></p>
-                                <p class="text-muted fs-20">
-                                    Releases: 18 Maret 2023
-                                </p>
+                                <div class="card-body p-0 pt-2">
+                                    <h6 class="card-title mt-2 pt-2 limit-text" title="{{ $item->name }}">
+                                        <b>{{ $item->name }}</b>
+                                    </h6>
+                                    <a href="" class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                        <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                    </a>
+                                    <a href=""
+                                        class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
+                                        <i class="fas fa-heart fa-lg px-1 text-secondary"></i>
+                                    </a>
+                                    {{-- Pengkondisian status product --}}
+                                    @if ($item->status == 'Ready')
+                                        <div class="btn ready-content">
+                                            {{ $item->status }}
+                                        </div>
+                                    @elseif ($item->status == 'Pre-Order')
+                                        <div class="btn pre-order-content">
+                                            {{ $item->status }}
+                                        </div>
+                                    @elseif ($item->status == 'Run Out')
+                                        <div class="btn run-out-content">
+                                            {{ $item->status }}
+                                        </div>
+                                    @endif
+                                    <p class="card-text mb-0 text-theme-two pt-2"><b>IDR
+                                            {{ priceConversion($item->price) }}</b></p>
+                                    <p class="text-muted fs-20">
+                                        Releases: {{ dateConversion($item->release_date) }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
 
                 </div>
 
