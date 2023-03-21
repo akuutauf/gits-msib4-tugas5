@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -39,9 +40,19 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        //  mengambil data product
+        $product = Product::find($id);
+
+        // validasi field satu persatu sebelum melakukan insert
+        Cart::create([
+            'product_id' => $product->id,
+            'quantity' => 1,
+            'total_price' => $product->price,
+        ]);
+
+        return redirect()->route('index.cart');
     }
 
     /**

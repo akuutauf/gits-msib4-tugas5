@@ -27,8 +27,8 @@ Nama: Taufik Hidayat Universitas: Politeknik Negeri Banyuwangi
 // Mempersiapkan CRUD Cart (13.00 - 16.20)
 
 // Selasa
-// Memperbaiki relasi tabel (06.30 - )
-//
+// Memperbaiki relasi tabel (06.30 - 07.00)
+// Menambahkan fitur insert product pada tabel cart (07.00 - 9.15)
 
 
 -->

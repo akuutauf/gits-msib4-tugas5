@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,6 +13,8 @@ class PagesController extends Controller
     public function home()
     {
         $products = [
+            'products' => Product::all(),
+            'carts' => Cart::all(),
             'figure_count' => DB::table('products')->join('categories', 'products.category_id', '=', 'categories.id')->where('categories.name', 'figure')->count(),
             'manga_count' => DB::table('products')->join('categories', 'products.category_id', '=', 'categories.id')->where('categories.name', 'manga')->count(),
             'nendoroid_count' => DB::table('products')->join('categories', 'products.category_id', '=', 'categories.id')->where('categories.name', 'nendoroid')->count(),
@@ -24,7 +27,7 @@ class PagesController extends Controller
             'accessories' => $products = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.id')->where('categories.name', '=', 'merchandise')->select('products.*')->get(),
         ];
 
-        // dd($products['figure_count']);
+        // dd($products['cart_product']);
         return view('pages.customer.home', $products);
     }
 
