@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Waktu pembuatan: 21 Mar 2023 pada 01.00
+-- Waktu pembuatan: 21 Mar 2023 pada 08.48
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -41,10 +41,11 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `product_id`, `quantity`, `total_price`, `created_at`, `updated_at`) VALUES
-(2, 10, 2, 0, NULL, NULL),
-(3, 11, 1, 0, NULL, NULL),
-(4, 5, 1, 0, NULL, NULL),
-(5, 7, 1, 0, NULL, NULL);
+(15, 2, 4, 15400000, '2023-03-20 23:13:54', '2023-03-20 23:59:31'),
+(16, 4, 2, 4700000, '2023-03-20 23:14:01', '2023-03-20 23:59:21'),
+(17, 5, 3, 750000, '2023-03-20 23:57:03', '2023-03-20 23:59:15'),
+(18, 3, 1, 2700000, '2023-03-20 23:59:47', '2023-03-21 00:00:06'),
+(19, 9, 3, 540000, '2023-03-21 00:47:11', '2023-03-21 00:47:17');
 
 -- --------------------------------------------------------
 
@@ -170,7 +171,7 @@ INSERT INTO `products` (`id`, `category_id`, `name`, `foto`, `price`, `stock`, `
 (2, 2, 'PVC Figure 1/7 Ningguang - Hidden Moon Tianquan Ver.', 'https://i.postimg.cc/8CkF69GS/1.webp', 3850000, 46, 'Specifications Scale: 1/7\r\nSize: Approx. H270mm x Approx. W300mm x Approx. D300mm (full diorama) / Approx. H210mm x Approx. W200mm x Approx. D120mm (figure and chair only)\r\nMaterial: PVC, ABS\r\nBattery Type: CR1220 (not included)\r\nFeatures: Light-up function (switch is on the bottom of the lantern stand)\r\n\r\n[Set Contents]\r\n-Main figure x1\r\n-Special base x1\r\nDetails Sculptor: APEX TOYS', '2023-03-21', 'Ready', '2023-03-20 16:39:35', '2023-03-20 16:39:35'),
 (3, 2, 'PVC Figure 1/7 Klee - Spark Knight Ver. - Genshin Impact', 'https://i.postimg.cc/vmP4Lh86/2.webp', 2700000, 71, 'Specifications Scale: 1/7\r\nSize: Main Part: Approx. H17.5cm\r\nMaterial: PVC, ABS\r\n\r\n[Set Contents]\r\n-Main figure\r\n-Special base\r\nDetails Sculptor: APEX TOYS', '2023-03-21', 'Pre-Order', '2023-03-20 16:40:44', '2023-03-20 16:42:43'),
 (4, 2, 'PVC Figure 1/7 Traveler / Aether - Genshin Impact', 'https://i.postimg.cc/Gmx89rZK/3.webp', 2350000, 66, 'Material : PVC & ABS\r\nSize : 270mm', '2023-03-21', 'Ready', '2023-03-20 16:41:41', '2023-03-20 16:41:41'),
-(5, 2, 'PVC Figure 1/7 Traveler / Lumine - Genshin Impact', 'https://i.postimg.cc/y8H3VWrW/4.webp', 240000, 6, 'Material : PVC & ABS\r\nSize : 270mm', '2023-03-21', 'Run Out', '2023-03-20 16:42:32', '2023-03-20 16:42:52'),
+(5, 2, 'PVC Figure 1/7 Traveler / Lumine - Genshin Impact', 'https://i.postimg.cc/y8H3VWrW/4.webp', 250000, 6, 'Material : PVC & ABS\r\nSize : 270mm', '2023-03-21', 'Run Out', '2023-03-20 16:42:32', '2023-03-20 23:58:42'),
 (6, 3, 'Shueisha Jump Comics Manga Kimetsu no Yaiba: Gaiden Side Stories - Koyoharu Gotouge', 'https://i.postimg.cc/q75Qz8Kp/1.webp', 150000, 56, 'Original from Japan', '2023-03-21', 'Ready', '2023-03-20 16:45:14', '2023-03-20 16:45:14'),
 (7, 3, 'Shueisha Jump Comics Manga Kimetsu no Yaiba 22 - Koyoharu Gotouge', 'https://i.postimg.cc/K8Q0yXvk/2.webp', 180000, 75, 'Original from Japan, Japanese Language', '2023-03-21', 'Run Out', '2023-03-20 16:46:10', '2023-03-20 16:46:10'),
 (8, 3, 'Shueisha Jump Comics Manga Kimetsu no Yaiba 14 - Koyoharu Gotouge', 'https://i.postimg.cc/g0JNzMnM/4.webp', 170000, 31, 'Original from Japan, Japanese Language', '2023-03-21', 'Ready', '2023-03-20 16:47:06', '2023-03-20 16:47:06'),
@@ -261,7 +262,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `categories`

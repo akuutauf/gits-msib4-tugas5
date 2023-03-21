@@ -19,7 +19,7 @@
         $slug = explode('-', $date);
         return $slug[2] . ' ' . $month[(int) $slug[1]] . ' ' . $slug[0];
     }
-
+    
     function priceConversion($price)
     {
         $formattedPrice = number_format($price, 0, ',', '.');
@@ -174,6 +174,7 @@
                             </div>
                         </form>
                     @endforeach
+
                 </div>
             </div>
 
@@ -200,46 +201,73 @@
                 <div class="slider owl-carousel owl-theme">
 
                     @foreach ($manga as $item)
-                        <div class="item col-md-12 d-flex justify-content-center p-2">
-                            <div class="card my-2 shadow-sm p-4 card-hover">
-                                <a href="#!" class="img-wrap">
-                                    <img src="{{ $item->foto }}" class="card-img-top rounded"
-                                        title="{{ $item->name }}" style="aspect-ratio: 1 / 1">
-                                </a>
-                                <div class="card-body p-0 pt-2">
-                                    <h6 class="card-title mt-2 pt-2 limit-text" title="{{ $item->name }}">
-                                        <b>{{ $item->name }}</b>
-                                    </h6>
-                                    <a href=""
-                                        class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                        <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                        <form action="{{ route('store.cart', $item->id) }}" method="POST">
+                            @csrf
+
+                            <div class="item col-md-12 d-flex justify-content-center p-2">
+                                <div class="card my-2 shadow-sm p-4 card-hover">
+                                    <a href="#!" class="img-wrap">
+                                        <img src="{{ $item->foto }}" class="card-img-top rounded"
+                                            title="{{ $item->name }}" style="aspect-ratio: 1 / 1">
                                     </a>
-                                    <a href=""
-                                        class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
-                                        <i class="fas fa-heart fa-lg px-1 text-secondary"></i>
-                                    </a>
-                                    {{-- Pengkondisian status product --}}
-                                    @if ($item->status == 'Ready')
-                                        <div class="btn ready-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @elseif ($item->status == 'Pre-Order')
-                                        <div class="btn pre-order-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @elseif ($item->status == 'Run Out')
-                                        <div class="btn run-out-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @endif
-                                    <p class="card-text mb-0 text-theme-two pt-2"><b>IDR
-                                            {{ priceConversion($item->price) }}</b></p>
-                                    <p class="text-muted fs-20">
-                                        Releases: {{ dateConversion($item->release_date) }}
-                                    </p>
+                                    <div class="card-body p-0 pt-2">
+                                        <h6 class="card-title mt-2 pt-2 limit-text" title="{{ $item->name }}">
+                                            <b>{{ $item->name }}</b>
+                                        </h6>
+
+                                        <button type="submit"
+                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                            <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                        </button>
+
+                                        {{-- jika product ada di cart --}}
+                                        {{-- @foreach ($carts as $data)
+                                            @if ($item->id == $data->product_id)
+                                                <button type="submit"
+                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover disabled">
+                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                                </button>
+                                            @endif
+                                        @endforeach --}}
+
+                                        {{-- jika product tidak ada di cart --}}
+                                        {{-- @foreach ($carts as $data)
+                                            @if ($item->id != $data->product_id)
+                                                <button type="submit"
+                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                                </button>
+                                            @break
+                                        @endif
+                                    @endforeach --}}
+
+                                        <a href=""
+                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
+                                            <i class="fas fa-heart fa-lg px-1 text-secondary"></i>
+                                        </a>
+                                        {{-- Pengkondisian status product --}}
+                                        @if ($item->status == 'Ready')
+                                            <div class="btn ready-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @elseif ($item->status == 'Pre-Order')
+                                            <div class="btn pre-order-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @elseif ($item->status == 'Run Out')
+                                            <div class="btn run-out-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @endif
+                                        <p class="card-text mb-0 text-theme-two pt-2"><b>IDR
+                                                {{ priceConversion($item->price) }}</b></p>
+                                        <p class="text-muted fs-20">
+                                            Releases: {{ dateConversion($item->release_date) }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     @endforeach
 
                 </div>
@@ -268,46 +296,73 @@
                 <div class="slider owl-carousel owl-theme">
 
                     @foreach ($nendoroid as $item)
-                        <div class="item col-md-12 d-flex justify-content-center p-2">
-                            <div class="card my-2 shadow-sm p-4 card-hover">
-                                <a href="#!" class="img-wrap">
-                                    <img src="{{ $item->foto }}" class="card-img-top rounded"
-                                        title="{{ $item->name }}" style="aspect-ratio: 1 / 1">
-                                </a>
-                                <div class="card-body p-0 pt-2">
-                                    <h6 class="card-title mt-2 pt-2 limit-text" title="{{ $item->name }}">
-                                        <b>{{ $item->name }}</b>
-                                    </h6>
-                                    <a href=""
-                                        class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                        <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                        <form action="{{ route('store.cart', $item->id) }}" method="POST">
+                            @csrf
+
+                            <div class="item col-md-12 d-flex justify-content-center p-2">
+                                <div class="card my-2 shadow-sm p-4 card-hover">
+                                    <a href="#!" class="img-wrap">
+                                        <img src="{{ $item->foto }}" class="card-img-top rounded"
+                                            title="{{ $item->name }}" style="aspect-ratio: 1 / 1">
                                     </a>
-                                    <a href=""
-                                        class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
-                                        <i class="fas fa-heart fa-lg px-1 text-secondary"></i>
-                                    </a>
-                                    {{-- Pengkondisian status product --}}
-                                    @if ($item->status == 'Ready')
-                                        <div class="btn ready-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @elseif ($item->status == 'Pre-Order')
-                                        <div class="btn pre-order-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @elseif ($item->status == 'Run Out')
-                                        <div class="btn run-out-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @endif
-                                    <p class="card-text mb-0 text-theme-two pt-2"><b>IDR
-                                            {{ priceConversion($item->price) }}</b></p>
-                                    <p class="text-muted fs-20">
-                                        Releases: {{ dateConversion($item->release_date) }}
-                                    </p>
+                                    <div class="card-body p-0 pt-2">
+                                        <h6 class="card-title mt-2 pt-2 limit-text" title="{{ $item->name }}">
+                                            <b>{{ $item->name }}</b>
+                                        </h6>
+
+                                        <button type="submit"
+                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                            <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                        </button>
+
+                                        {{-- jika product ada di cart --}}
+                                        {{-- @foreach ($carts as $data)
+                                            @if ($item->id == $data->product_id)
+                                                <button type="submit"
+                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover disabled">
+                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                                </button>
+                                            @endif
+                                        @endforeach --}}
+
+                                        {{-- jika product tidak ada di cart --}}
+                                        {{-- @foreach ($carts as $data)
+                                            @if ($item->id != $data->product_id)
+                                                <button type="submit"
+                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                                </button>
+                                            @break
+                                        @endif
+                                    @endforeach --}}
+
+                                        <a href=""
+                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
+                                            <i class="fas fa-heart fa-lg px-1 text-secondary"></i>
+                                        </a>
+                                        {{-- Pengkondisian status product --}}
+                                        @if ($item->status == 'Ready')
+                                            <div class="btn ready-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @elseif ($item->status == 'Pre-Order')
+                                            <div class="btn pre-order-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @elseif ($item->status == 'Run Out')
+                                            <div class="btn run-out-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @endif
+                                        <p class="card-text mb-0 text-theme-two pt-2"><b>IDR
+                                                {{ priceConversion($item->price) }}</b></p>
+                                        <p class="text-muted fs-20">
+                                            Releases: {{ dateConversion($item->release_date) }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     @endforeach
 
                 </div>
@@ -336,46 +391,73 @@
                 <div class="slider owl-carousel owl-theme">
 
                     @foreach ($merchandise as $item)
-                        <div class="item col-md-12 d-flex justify-content-center p-2">
-                            <div class="card my-2 shadow-sm p-4 card-hover">
-                                <a href="#!" class="img-wrap">
-                                    <img src="{{ $item->foto }}" class="card-img-top rounded"
-                                        title="{{ $item->name }}" style="aspect-ratio: 1 / 1">
-                                </a>
-                                <div class="card-body p-0 pt-2">
-                                    <h6 class="card-title mt-2 pt-2 limit-text" title="{{ $item->name }}">
-                                        <b>{{ $item->name }}</b>
-                                    </h6>
-                                    <a href=""
-                                        class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                        <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                        <form action="{{ route('store.cart', $item->id) }}" method="POST">
+                            @csrf
+
+                            <div class="item col-md-12 d-flex justify-content-center p-2">
+                                <div class="card my-2 shadow-sm p-4 card-hover">
+                                    <a href="#!" class="img-wrap">
+                                        <img src="{{ $item->foto }}" class="card-img-top rounded"
+                                            title="{{ $item->name }}" style="aspect-ratio: 1 / 1">
                                     </a>
-                                    <a href=""
-                                        class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
-                                        <i class="fas fa-heart fa-lg px-1 text-secondary"></i>
-                                    </a>
-                                    {{-- Pengkondisian status product --}}
-                                    @if ($item->status == 'Ready')
-                                        <div class="btn ready-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @elseif ($item->status == 'Pre-Order')
-                                        <div class="btn pre-order-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @elseif ($item->status == 'Run Out')
-                                        <div class="btn run-out-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @endif
-                                    <p class="card-text mb-0 text-theme-two pt-2"><b>IDR
-                                            {{ priceConversion($item->price) }}</b></p>
-                                    <p class="text-muted fs-20">
-                                        Releases: {{ dateConversion($item->release_date) }}
-                                    </p>
+                                    <div class="card-body p-0 pt-2">
+                                        <h6 class="card-title mt-2 pt-2 limit-text" title="{{ $item->name }}">
+                                            <b>{{ $item->name }}</b>
+                                        </h6>
+
+                                        <button type="submit"
+                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                            <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                        </button>
+
+                                        {{-- jika product ada di cart --}}
+                                        {{-- @foreach ($carts as $data)
+                                            @if ($item->id == $data->product_id)
+                                                <button type="submit"
+                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover disabled">
+                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                                </button>
+                                            @endif
+                                        @endforeach --}}
+
+                                        {{-- jika product tidak ada di cart --}}
+                                        {{-- @foreach ($carts as $data)
+                                            @if ($item->id != $data->product_id)
+                                                <button type="submit"
+                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                                </button>
+                                            @break
+                                        @endif
+                                    @endforeach --}}
+
+                                        <a href=""
+                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
+                                            <i class="fas fa-heart fa-lg px-1 text-secondary"></i>
+                                        </a>
+                                        {{-- Pengkondisian status product --}}
+                                        @if ($item->status == 'Ready')
+                                            <div class="btn ready-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @elseif ($item->status == 'Pre-Order')
+                                            <div class="btn pre-order-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @elseif ($item->status == 'Run Out')
+                                            <div class="btn run-out-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @endif
+                                        <p class="card-text mb-0 text-theme-two pt-2"><b>IDR
+                                                {{ priceConversion($item->price) }}</b></p>
+                                        <p class="text-muted fs-20">
+                                            Releases: {{ dateConversion($item->release_date) }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     @endforeach
 
                 </div>
@@ -403,47 +485,74 @@
             <div class="row">
                 <div class="slider owl-carousel owl-theme">
 
-                    @foreach ($merchandise as $item)
-                        <div class="item col-md-12 d-flex justify-content-center p-2">
-                            <div class="card my-2 shadow-sm p-4 card-hover">
-                                <a href="#!" class="img-wrap">
-                                    <img src="{{ $item->foto }}" class="card-img-top rounded"
-                                        title="{{ $item->name }}" style="aspect-ratio: 1 / 1">
-                                </a>
-                                <div class="card-body p-0 pt-2">
-                                    <h6 class="card-title mt-2 pt-2 limit-text" title="{{ $item->name }}">
-                                        <b>{{ $item->name }}</b>
-                                    </h6>
-                                    <a href=""
-                                        class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
-                                        <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                    @foreach ($accessories as $item)
+                        <form action="{{ route('store.cart', $item->id) }}" method="POST">
+                            @csrf
+
+                            <div class="item col-md-12 d-flex justify-content-center p-2">
+                                <div class="card my-2 shadow-sm p-4 card-hover">
+                                    <a href="#!" class="img-wrap">
+                                        <img src="{{ $item->foto }}" class="card-img-top rounded"
+                                            title="{{ $item->name }}" style="aspect-ratio: 1 / 1">
                                     </a>
-                                    <a href=""
-                                        class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
-                                        <i class="fas fa-heart fa-lg px-1 text-secondary"></i>
-                                    </a>
-                                    {{-- Pengkondisian status product --}}
-                                    @if ($item->status == 'Ready')
-                                        <div class="btn ready-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @elseif ($item->status == 'Pre-Order')
-                                        <div class="btn pre-order-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @elseif ($item->status == 'Run Out')
-                                        <div class="btn run-out-content">
-                                            {{ $item->status }}
-                                        </div>
-                                    @endif
-                                    <p class="card-text mb-0 text-theme-two pt-2"><b>IDR
-                                            {{ priceConversion($item->price) }}</b></p>
-                                    <p class="text-muted fs-20">
-                                        Releases: {{ dateConversion($item->release_date) }}
-                                    </p>
+                                    <div class="card-body p-0 pt-2">
+                                        <h6 class="card-title mt-2 pt-2 limit-text" title="{{ $item->name }}">
+                                            <b>{{ $item->name }}</b>
+                                        </h6>
+
+                                        <button type="submit"
+                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                            <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                        </button>
+
+                                        {{-- jika product ada di cart --}}
+                                        {{-- @foreach ($carts as $data)
+                                            @if ($item->id == $data->product_id)
+                                                <button type="submit"
+                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover disabled">
+                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                                </button>
+                                            @endif
+                                        @endforeach --}}
+
+                                        {{-- jika product tidak ada di cart --}}
+                                        {{-- @foreach ($carts as $data)
+                                            @if ($item->id != $data->product_id)
+                                                <button type="submit"
+                                                    class="btn btn-light border px-2 mx-1 pt-2 float-end icon-cart-hover">
+                                                    <i class="fas fa-shopping-cart fa-lg px-1 text-secondary"></i>
+                                                </button>
+                                            @break
+                                        @endif
+                                    @endforeach --}}
+
+                                        <a href=""
+                                            class="btn btn-light border px-2 mx-1 pt-2 float-end icon-heart-hover">
+                                            <i class="fas fa-heart fa-lg px-1 text-secondary"></i>
+                                        </a>
+                                        {{-- Pengkondisian status product --}}
+                                        @if ($item->status == 'Ready')
+                                            <div class="btn ready-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @elseif ($item->status == 'Pre-Order')
+                                            <div class="btn pre-order-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @elseif ($item->status == 'Run Out')
+                                            <div class="btn run-out-content">
+                                                {{ $item->status }}
+                                            </div>
+                                        @endif
+                                        <p class="card-text mb-0 text-theme-two pt-2"><b>IDR
+                                                {{ priceConversion($item->price) }}</b></p>
+                                        <p class="text-muted fs-20">
+                                            Releases: {{ dateConversion($item->release_date) }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     @endforeach
 
                 </div>

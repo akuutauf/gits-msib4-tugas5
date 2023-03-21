@@ -16,11 +16,6 @@ class CartController extends Controller
      */
     public function index()
     {
-        // mengecek apakah produk ada pada cart
-        // $cart = Cart::find($id);
-        // $searchProduct = $cart->product_id;
-        // $price = Product::where('id', $searchProduct)->value('price');
-
         $data = [
             'product_ready' => Product::where('status', "Ready")->orWhere('status', "Pre-Order")->get(),
             'products' => DB::table('carts')->join('products', 'carts.product_id', '=', 'products.id')->select('products.*', 'carts.*')->orderBy('.carts.product_id', 'desc')->get(),

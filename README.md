@@ -31,6 +31,6 @@ Nama: Taufik Hidayat Universitas: Politeknik Negeri Banyuwangi
 // Menambahkan fitur insert product pada tabel cart (07.00 - 9.15)
 // Menambahkan fitur delete untuk cart (11.30 - 13.30)
 // Menambahkan fitur update untuk cart (13.55 - 14.00)
-// Memperbaiki view untuk insert data cart (14.05 - )
+// Memperbaiki view untuk insert data cart (14.05 - 50)
 
 -->
